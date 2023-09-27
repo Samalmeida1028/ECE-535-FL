@@ -16,7 +16,7 @@ Understanding the role of dataset characterization in domain adaptive tracking.
 # Deliverables: 
 • Implement and understand the Simultaneous Localization And Mapping (SLAM) algorithm , and its dataset Characterization Framework (code provided) \
 • Label dataset with characterization and test the quality of dataset (data provided) \
-• Analyze characterization metric, design and implement at least one more metric that is not part of given framework \
+• Analyze characterization metric, design and implement at least one more metric that is not part of given framework
 
 # Responsibilities:
 Setup: Samuel Almeida \

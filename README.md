@@ -23,8 +23,8 @@ Project Timelines: TBD, Split final due date into threee sections for the delive
 References:\
       Are We Ready for Robust and Resilient SLAM? A Framework For Quantitative Characterization of\
       SLAM Datasets\
-      • Code: https://github.com/IslamAAli/SLAM-DSChar\
+      • Code: https://github.com/IslamAAli/SLAM-DSChar \
       • Dataset:\
-      1. EuRoC: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets\
-      2. KITTI: https://www.cvlibs.net/datasets/kitti/eval_odometry.php\
-      3. HoloSet: https://tinyurl.com/holoset-dataset\
+      1. EuRoC: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets \
+      2. KITTI: https://www.cvlibs.net/datasets/kitti/eval_odometry.php \
+      3. HoloSet: https://tinyurl.com/holoset-dataset \

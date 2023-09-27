@@ -1,4 +1,4 @@
-# ECE 535 Course Project: Domain Adaptive SLAM
+# ECE 535 Course Project: DataSet Characterization for Tracking Algorithms (Domain Adaptive SLAM)
 
 # Team Members: 
 Samuel Almeida \

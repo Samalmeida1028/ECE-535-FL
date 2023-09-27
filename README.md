@@ -1,11 +1,11 @@
 # ECE-535-SLAM
 \
 \
-##Why is your group suitable for the project?\
+**Why is your group suitable for the project?**\
 Arjun and I are both interested in learning more about SLAM, and have basic knowledge of it already.\
 \
-##Motivation, design goals, deliverables, system blocks, hw/sw requirements,\
-team members responsibilities, project timeline, references\
+**Motivation, design goals, deliverables, system blocks, hw/sw requirements,**\
+**team members responsibilities, project timeline, references**\
 \
 Motivation: Wanting to learn more about SLAM\
 Design Goal: Understanding the role of dataset characterization in domain adaptive tracking\

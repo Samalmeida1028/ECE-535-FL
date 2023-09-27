@@ -29,7 +29,7 @@ Algorithm Design: Both
 When we say both of us are assigned a responsibility, we will take equal parts to complete that responsibility. 
 
 # System Blocks
-TBD
+![image](https://github.com/Samalmeida1028/ECE-535-SLAM/assets/41523488/f8a0f2a5-02be-41e6-997e-b952af75db79)
 
 # HW/SW Requirements
 A computer that is capable of doing image processing, and also running Python/C++ code 

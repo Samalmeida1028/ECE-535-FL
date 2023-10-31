@@ -142,19 +142,21 @@ RUN mkdir -p ~/eigen3 && \
 # # ------------------------------------------------------------------------------------------
 # [5] SLAM Datasets Characterization System
 
-# RUN apt-get update && apt-get install -y \
-# 	libpcap-dev \
-# 	libssl-dev
+RUN apt-get update && apt-get install -y \
+ 	libpcap-dev \
+ 	libssl-dev
 
 WORKDIR ../../
 
 RUN echo "[Dockerfile Info] Installing DSChar here ......"
-RUN mkdir -p ds_char
-RUN cd ds_char
+RUN mkdir -p ./ds_char
+RUN mkdir -p ./ds_char/code
+RUN mkdir -p ./ds_char/code/script
+RUN cd ./ds_char
 COPY ./ ./ds_char/code
 RUN	cd ds_char/code/script && \
-		chmod +x build_sys.sh && \
-		./build_sys.sh   
+		chmod +x ./script/build_sys.sh && \
+		./script/build_sys.sh   
 		
 		
 		

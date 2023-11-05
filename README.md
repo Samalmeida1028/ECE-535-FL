@@ -30,7 +30,7 @@ Algorithm Design: Both
 When we say both of us are assigned a responsibility, we will take equal parts to complete that responsibility. 
 
 # System Blocks
-
+![image](https://github.com/Samalmeida1028/ECE-535-SLAM/assets/41523488/a80b7a77-f9e9-41c9-b5b6-2a8df140d1a7)
 
 # HW/SW Requirements
 A computer that has Python, and optionally CUDA-enabled capabilities, and a GPU

@@ -1,27 +1,28 @@
-# ECE 535 Course Project: DataSet Characterization for Tracking Algorithms (Domain Adaptive SLAM)
+# ECE 535 Course Project: Multimodal Federated Learning (FL) on Internet of Things (IoT) Data
 
 # Team Members: 
 Samuel Almeida \
 Arjun Viswanathan
 
 # Why is your group suitable for the project?
-We are both interested in learning more about SLAM, and have basic knowledge of it already from taking CS 383: Artificial Intelligence last semester. We are also very versed in programming and AI algorithms. 
+We would like to learn more about how multimodal data is learned and a model is built from that, as well as its applications to IoT. We both have a solid understanding of ML models, and would like to see how we can use that knowledge in this project. 
 
 # Motivation
-Wanting to learn more about SLAM. 
+Wanting to learn more about FL
 
 # Design Goal: 
-Understanding the role of dataset characterization in domain adaptive tracking. 
+Understand and benchmark different multimodal datasets in a federated setting
 
 # Deliverables: 
-• Implement and understand the Simultaneous Localization And Mapping (SLAM) algorithm , and its dataset Characterization Framework (code provided) \
-• Label dataset with characterization and test the quality of dataset (data provided) \
-• Analyze characterization metric, design and implement at least one more metric that is not part of given framework
+• Understand multimodal FL 
+• Use given datasets to reproduce the results in the paper
+• Perform a per-class accuracy analysis of the results and observe the effect of skewed data distribution on the per-class accuracy
+• Evaluate the system on a multimodal dataset that is relatively balanced in class distribution
 
 # Responsibilities:
-Setup: Samuel Almeida \
-Software: Arjun Viswanathan \
-Networking: Both \
+Setup: Arjun Viswanathan \
+Software: Both \
+Networking: Samuel Almeida \
 Writing: Arjun Viswanathan \
 Research: Samuel Almeida \
 Algorithm Design: Both 
@@ -29,20 +30,18 @@ Algorithm Design: Both
 When we say both of us are assigned a responsibility, we will take equal parts to complete that responsibility. 
 
 # System Blocks
-![image](https://github.com/Samalmeida1028/ECE-535-SLAM/assets/41523488/f8a0f2a5-02be-41e6-997e-b952af75db79)
+
 
 # HW/SW Requirements
-A computer that is capable of doing image processing, and also running Python/C++ code 
+A computer that has Python, and optionally CUDA-enabled capabilities, and a GPU
 
 # Project Timeline: 
 The due date is TBD, but we are hoping we will work 1-4 hours on this project per week to advance towards the finish line and create our final presentation and demos
 
 # References:
-Are We Ready for Robust and Resilient SLAM? A Framework For Quantitative Characterization of SLAM Datasets \
+Multimodal Federated Learning for IoT Data \
 • Code: \
-      https://github.com/IslamAAli/SLAM-DSChar
+      https://github.com/yuchenzhao/iotdi22-mmfl
 
 • Datasets: \
-      1. EuRoC: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets  \
-      2. KITTI: https://www.cvlibs.net/datasets/kitti/eval_odometry.php  \
-      3. HoloSet: https://tinyurl.com/holoset-dataset \
+      https://drive.google.com/drive/folders/1rWJYkfMavGs1F-H0jykJ5V0fIiwrQdJV

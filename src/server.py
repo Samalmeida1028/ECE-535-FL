@@ -228,7 +228,13 @@ class Server:
             x_samples = np.expand_dims(data_test["A"], axis=0)
         elif self.test_modality == "B":
             x_samples = np.expand_dims(data_test["B"], axis=0)
-        y_samples = np.expand_dims(data_test["y"], axis=0)
+        y_samples = np.expand_dims(data_test["y"], axis=0) # true labels for classes
+
+        classes, class_counts = np.unique(y_samples, return_counts=True)
+        class_counter = dict.fromkeys(classes.astype(int).astype(str), 0)
+        class_counts = dict(zip(classes.astype(int).astype(str), class_counts))
+
+        print(class_counts)
 
         win_loss = []
         win_accuracy = []
@@ -248,8 +254,14 @@ class Server:
             output = self.global_sv(rpts)
 
             loss = criterion(output, targets.long())
-            top_p, top_class = output.topk(1, dim=1)
+            top_p, top_class = output.topk(1, dim=1) # predicted class from the evaluation model
             equals = top_class == targets.view(*top_class.shape).long()
+
+            yflat = y.flatten()
+            for j in range(len(yflat)):
+                if equals.numpy()[j][0]:
+                    class_counter[str(int(yflat[j]))] += 1
+
             accuracy = torch.mean(equals.type(torch.FloatTensor))
             np_gt = y.flatten()
             np_pred = top_class.squeeze().cpu().detach().numpy()
@@ -261,5 +273,7 @@ class Server:
 
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
+
+        # write logic to calclate the accuracy. Run through every class and find the accuracy with the 2 dicts
 
         return np.mean(win_loss), np.mean(win_accuracy), np.mean(win_f1)

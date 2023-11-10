@@ -231,10 +231,10 @@ class Server:
         y_samples = np.expand_dims(data_test["y"], axis=0) # true labels for classes
 
         classes, class_counts = np.unique(y_samples, return_counts=True)
-        class_counter = dict.fromkeys(classes.astype(int).astype(str), 0)
-        class_counts = dict(zip(classes.astype(int).astype(str), class_counts))
-
-        print(class_counts)
+        classes = classes.astype(int).astype(str)
+        class_counter = dict.fromkeys(classes, 0)
+        class_counts = dict(zip(classes, class_counts))
+        perclassacc = dict.fromkeys(classes, 0.0)
 
         win_loss = []
         win_accuracy = []
@@ -274,6 +274,9 @@ class Server:
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
 
-        # write logic to calclate the accuracy. Run through every class and find the accuracy with the 2 dicts
+        perclassacc = {key: class_counter[key] // class_counts.get(key, 0)
+                        for key in class_counter.keys()}
+        
+        print(perclassacc)
 
-        return np.mean(win_loss), np.mean(win_accuracy), np.mean(win_f1)
+        return np.mean(win_loss), np.mean(win_accuracy), np.mean(win_f1), perclassacc

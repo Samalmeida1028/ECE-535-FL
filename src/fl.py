@@ -82,8 +82,10 @@ class FL:
                 continue
             else:
                 with torch.no_grad():
-                    test_loss, test_accuracy, test_f1 = server.eval(
+                    test_loss, test_accuracy, test_f1, perclassaccuracy = server.eval(
                         server_test)
+                    
+                # write logic to break apart the dictionary perclassaccuracy and take every class accuracy and put into the txt
                 result_table[row] = np.array(
                     (t+1, local_ae_loss, train_loss, train_accuracy, test_loss, test_accuracy, test_f1))
                 row += 1

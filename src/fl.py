@@ -85,9 +85,13 @@ class FL:
                     test_loss, test_accuracy, test_f1, perclassaccuracy = server.eval(
                         server_test)
                     
-                # write logic to break apart the dictionary perclassaccuracy and take every class accuracy and put into the txt
                 result_table[row] = np.array(
                     (t+1, local_ae_loss, train_loss, train_accuracy, test_loss, test_accuracy, test_f1))
+                
+                # TODO: Verify this logic actually works
+                for k in perclassaccuracy.keys():
+                    result_table[row] = np.append(result_table[row], perclassaccuracy[k], axis=1)
+
                 row += 1
                 self.write_result(result_table)
 

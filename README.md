@@ -33,7 +33,7 @@ When we say both of us are assigned a responsibility, we will take equal parts t
 ![image](https://github.com/Samalmeida1028/ECE-535-SLAM/assets/41523488/a80b7a77-f9e9-41c9-b5b6-2a8df140d1a7)
 
 # HW/SW Requirements
-A computer that has Python, and optionally CUDA-enabled capabilities, and a GPU
+A Linux computer that has Python, and optionally CUDA-enabled capabilities, and a GPU.
 
 # Project Timeline: 
 The due date is TBD, but we are hoping we will work 1-4 hours on this project per week to advance towards the finish line and create our final presentation and demos

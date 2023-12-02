@@ -31,6 +31,9 @@ class FL:
         client_train = data_train
         server_test = data_test
 
+        y_samples = np.expand_dims(data_test["y"], axis=0) # true labels for classes
+        extra_length = len(np.unique(y_samples))
+
         # There is a small chance that the labels in the generated server_train are fewer than the labels in server_test.
         # If that happens, regenerate the server_train again until the sets of lables between them are the same.
         while True:
@@ -58,7 +61,7 @@ class FL:
 
         n_eval_point = math.ceil(self.rounds / self.eval_interval)
         # result table: round, local_ae_loss, train_loss, train_accuracy, test_loss, test_accuracy, test_f1
-        result_table = np.zeros((n_eval_point, 7))
+        result_table = np.zeros((n_eval_point, 7 + extra_length))
         result_table[:, 0] = np.arange(1, self.rounds+1, self.eval_interval)
         row = 0
 
@@ -85,12 +88,10 @@ class FL:
                     test_loss, test_accuracy, test_f1, perclassaccuracy = server.eval(
                         server_test)
                     
-                result_table[row] = np.array(
+                result_table[row, 0:7] = np.array(
                     (t+1, local_ae_loss, train_loss, train_accuracy, test_loss, test_accuracy, test_f1))
-                
-                # TODO: Verify this logic actually works
-                for k in perclassaccuracy.keys():
-                    result_table[row] = np.append(result_table[row], perclassaccuracy[k], axis=1)
+
+                result_table[row, 7:] = np.array([perclassaccuracy[k] for k in perclassaccuracy.keys()])
 
                 row += 1
                 self.write_result(result_table)

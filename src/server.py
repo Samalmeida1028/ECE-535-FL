@@ -274,9 +274,7 @@ class Server:
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()
 
-        perclassacc = {key: class_counter[key] // class_counts.get(key, 0)
-                        for key in class_counter.keys()}
-        
-        print(perclassacc)
+        for key in class_counter.keys():
+            perclassacc[key] = float(class_counter[key] / class_counts.get(key))
 
         return np.mean(win_loss), np.mean(win_accuracy), np.mean(win_f1), perclassacc

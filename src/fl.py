@@ -3,6 +3,7 @@ import copy
 import torch
 import math
 import numpy as np
+import json
 
 from server import Server
 from client import Client
@@ -32,7 +33,17 @@ class FL:
         server_test = data_test
 
         y_samples = np.expand_dims(data_test["y"], axis=0) # true labels for classes
+        y_samples_train = np.expand_dims(data_test["y"], axis=0) # true labels for classes
         extra_length = len(np.unique(y_samples))
+        y_dist = np.unique(y_samples, return_counts=True)
+        y_dist_train = np.unique(y_samples, return_counts=True)
+
+        test_dist = {"trained classes": y_dist[0],"class counts" : y_dist[1]}
+        train_dist = {"trained classes": y_dist_train[0],"class counts" : y_dist_train[1]}
+        with open("distributions/test_dist.txt", 'w') as f:
+            f.write(json.dumps(test_dist))
+        with open("distributions/train_dist.txt", 'w') as f:
+            f.write(json.dumps(train_dist))
 
         # There is a small chance that the labels in the generated server_train are fewer than the labels in server_test.
         # If that happens, regenerate the server_train again until the sets of lables between them are the same.

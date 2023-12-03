@@ -40,10 +40,21 @@ class FL:
 
         test_dist = {"name":data_name,"trained classes": y_dist[0].tolist(),"class counts" : y_dist[1].tolist()}
         train_dist = {"name":data_name,"trained classes": y_dist_train[0].tolist(),"class counts" : y_dist_train[1].tolist()}
-        with open("distributions/test_dist.txt", 'w') as f:
-            f.write(json.dumps(test_dist))
-        with open("distributions/train_dist.txt", 'w') as f:
-            f.write(json.dumps(train_dist))
+        try:
+            with open("distributions/test_dist" + data_name + ".txt", 'w') as f:
+                f.write(json.dumps(test_dist))
+        except Exception as e:
+            print(e, "creating file")
+            with open("distributions/test_dist" + data_name + ".txt", 'x') as f:
+                f.write(json.dumps(test_dist))
+
+        try:
+            with open("distributions/train_dist" + data_name + ".txt", 'w') as f:
+                f.write(json.dumps(test_dist))
+        except Exception as e:
+            print(e, "creating file")
+            with open("distributions/train_dist" + data_name + ".txt", 'x') as f:
+                f.write(json.dumps(test_dist))
 
         # There is a small chance that the labels in the generated server_train are fewer than the labels in server_test.
         # If that happens, regenerate the server_train again until the sets of lables between them are the same.

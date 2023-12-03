@@ -33,10 +33,10 @@ class FL:
         server_test = data_test
 
         y_samples = np.expand_dims(data_test["y"], axis=0) # true labels for classes
-        y_samples_train = np.expand_dims(data_test["y"], axis=0) # true labels for classes
+        y_samples_train = np.expand_dims(data_train["y"], axis=0) # true labels for classes
         extra_length = len(np.unique(y_samples))
         y_dist = np.unique(y_samples, return_counts=True)
-        y_dist_train = np.unique(y_samples, return_counts=True)
+        y_dist_train = np.unique(y_samples_train, return_counts=True)
 
         test_dist = {"trained classes": y_dist[0],"class counts" : y_dist[1]}
         train_dist = {"trained classes": y_dist_train[0],"class counts" : y_dist_train[1]}

@@ -40,6 +40,7 @@ class FL:
 
         test_dist = {"trained classes": y_dist[0].tolist(),"class counts" : y_dist[1].tolist()}
         train_dist = {"trained classes": y_dist_train[0].tolist(),"class counts" : y_dist_train[1].tolist()}
+        
         with open("distributions/test_dist.txt", 'w') as f:
             f.write(json.dumps(test_dist))
         with open("distributions/train_dist.txt", 'w') as f:
@@ -118,5 +119,5 @@ class FL:
         else:
             results_path = self.results_path
         Path(results_path).mkdir(parents=True, exist_ok=True)
-        np.savetxt(os.path.join(results_path, "results.txt"),
+        np.savetxt(os.path.join(results_path, "results_2.txt"),
                    result_table, delimiter=",", fmt="%1.4e")

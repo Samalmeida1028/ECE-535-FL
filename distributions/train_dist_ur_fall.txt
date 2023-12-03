@@ -1,0 +1,1 @@
+{"name": "ur_fall", "trained classes": [0.0, 1.0, 2.0], "class counts": [6544, 1549, 2076]}

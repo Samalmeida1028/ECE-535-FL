@@ -261,7 +261,7 @@ def load_data(config):
             mat_data[f"x_train_{modality_B}"]), "y": np.squeeze(mat_data["y_train"])}
         data_test = {"A": zscore(mat_data[f"x_test_{modality_A}"]), "B": zscore(
             mat_data[f"x_test_{modality_B}"]), "y": np.squeeze(mat_data["y_test"])}
-        return (data_train, data_test)
+        return (data,data_train, data_test)
     elif data == "mhealth":
         modalities = ["acce", "gyro", "mage"]
         assert (
@@ -283,7 +283,7 @@ def load_data(config):
         data_train["A"] = np.concatenate(data_train["A"])
         data_train["B"] = np.concatenate(data_train["B"])
         data_train["y"] = np.squeeze(np.concatenate(data_train["y"], axis=1))
-        return (data_train, data_test)
+        return (data,data_train, data_test)
     elif data == "ur_fall":
         modalities = ["acce", "rgb", "depth"]
         assert (

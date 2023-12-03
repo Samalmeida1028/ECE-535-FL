@@ -110,14 +110,19 @@ class FL:
             else:
                 with torch.no_grad():
                     test_loss, test_accuracy, test_f1, perclassaccuracy = server.eval(
-                        server_test)
+                        server_test,data_name)
                     
                 result_table[row, 0:7] = np.array(
                     (t+1, local_ae_loss, train_loss, train_accuracy, test_loss, test_accuracy, test_f1))
 
-                result_table[row, 7:] = np.array([perclassaccuracy[k] for k in perclassaccuracy.keys()])
-
                 row += 1
+                try:
+                    with open("acc_results/result_" + str(perclassaccuracy.keys()) + ".txt", 'w') as f:
+                        f.write(json.dumps(perclassaccuracy))
+                except Exception as e:
+                    print(e, "creating file")
+                    with open("acc_results/result_" + str(perclassaccuracy.keys()) + ".txt", 'x') as f:
+                        f.write(json.dumps(perclassaccuracy))
                 self.write_result(result_table)
 
     def write_result(self, result_table):

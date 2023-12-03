@@ -210,7 +210,7 @@ class Server:
 
         return np.mean(round_loss), np.mean(round_accuracy)
 
-    def eval(self, data_test):
+    def eval(self, data_test,data_name):
         """Evaluates global models against testing data on the server.
 
         Args:
@@ -234,7 +234,7 @@ class Server:
         classes = classes.astype(int).astype(str)
         class_counter = dict.fromkeys(classes, 0)
         class_counts = dict(zip(classes, class_counts))
-        perclassacc = dict.fromkeys(classes, 0.0)
+        perclassacc = {data_name:dict.fromkeys(classes, 0.0)}
 
         win_loss = []
         win_accuracy = []

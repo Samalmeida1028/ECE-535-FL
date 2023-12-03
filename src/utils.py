@@ -347,7 +347,7 @@ def load_data(config):
         data_test["A"] = np.concatenate(data_test["A"])
         data_test["B"] = np.concatenate(data_test["B"])
         data_test["y"] = np.squeeze(np.concatenate(data_test["y"]))
-        return (data_train,  data_test)
+        return (data,data_train,  data_test)
 
 
 def split_server_train(data_train, config):

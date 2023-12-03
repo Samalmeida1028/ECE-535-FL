@@ -27,7 +27,7 @@ class FL:
         """Starts the FL communication rounds between the server and clients."""
 
         # Loads the training and testing data of the FL simumation
-        data_train, data_test = load_data(self.config)
+        data_name,data_train, data_test = load_data(self.config)
 
         client_train = data_train
         server_test = data_test
@@ -38,9 +38,8 @@ class FL:
         y_dist= np.unique(y_samples, return_counts=True)
         y_dist_train = np.unique(y_samples_train, return_counts=True)
 
-        test_dist = {"trained classes": y_dist[0].tolist(),"class counts" : y_dist[1].tolist()}
-        train_dist = {"trained classes": y_dist_train[0].tolist(),"class counts" : y_dist_train[1].tolist()}
-        
+        test_dist = {"name":data_name,"trained classes": y_dist[0].tolist(),"class counts" : y_dist[1].tolist()}
+        train_dist = {"name":data_name,"trained classes": y_dist_train[0].tolist(),"class counts" : y_dist_train[1].tolist()}
         with open("distributions/test_dist.txt", 'w') as f:
             f.write(json.dumps(test_dist))
         with open("distributions/train_dist.txt", 'w') as f:

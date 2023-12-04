@@ -35,12 +35,16 @@ class FL:
         y_samples = np.expand_dims(data_test["y"], axis=0) # true labels for classes
         y_samples_train = np.expand_dims(data_train["y"], axis=0) # true labels for classes
         extra_length = len(np.unique(y_samples))
-        
+
         y_dist= np.unique(y_samples, return_counts=True)
         y_dist_train = np.unique(y_samples_train, return_counts=True)
+        last_slash_index = self.results_path.rfind("/")
+        typemodle = self.results_path[last_slash_index+1:]
+        data_name+=typemodle
 
-        test_dist = {"name": data_name,"trained classes": y_dist[0].tolist(),"class counts" : y_dist[1].tolist()}
+        test_dist = {"name": data_name ,"trained classes": y_dist[0].tolist(),"class counts" : y_dist[1].tolist()}
         train_dist = {"name": data_name,"trained classes": y_dist_train[0].tolist(),"class counts" : y_dist_train[1].tolist()}
+        run_acc = {}
 
         try:
             with open("distributions/test_dist_" + data_name + ".txt", 'w') as f:
@@ -116,13 +120,27 @@ class FL:
                     (t+1, local_ae_loss, train_loss, train_accuracy, test_loss, test_accuracy, test_f1))
 
                 row += 1
+                dataset_name = str(list(perclassaccuracy)[0])
+
+                if not len(run_acc):
+                    run_acc = perclassaccuracy
+                    print(run_acc)
+                else:
+                    for key in run_acc[dataset_name]:
+                        values = run_acc[dataset_name][key]
+                        if(type(values) is list):
+                            values.append(perclassaccuracy[key])
+                        else:
+                            values = [values] + [perclassaccuracy[key]]
+                        run_acc[dataset_name].update({key:values})
+                print(run_acc)
                 try:
-                    with open("acc_results/result_" + str(perclassaccuracy.keys()) + ".txt", 'w') as f:
-                        f.write(json.dumps(perclassaccuracy))
+                    with open("acc_results/result_" + data_name + ".txt", 'w') as f:
+                        f.write(json.dumps(run_acc))
                 except Exception as e:
                     print(e, "creating file")
-                    with open("acc_results/result_" + str(perclassaccuracy.keys()) + ".txt", 'x') as f:
-                        f.write(json.dumps(perclassaccuracy))
+                    with open("acc_results/result_" + data_name + ".txt", 'x') as f:
+                        f.write(json.dumps(run_acc))
                 self.write_result(result_table)
 
     def write_result(self, result_table):

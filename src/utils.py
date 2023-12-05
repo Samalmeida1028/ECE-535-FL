@@ -247,9 +247,15 @@ def load_data(config):
     """
 
     data = config["SIMULATION"]["data"]
-    data_path = config["SIMULATION"]["data_path"]
+    data_path ="/media/sf_ece535_project/ECE-535-SLAM/"+ config["SIMULATION"]["data_path"]
     modality_A = config["SIMULATION"]["modality_A"]
     modality_B = config["SIMULATION"]["modality_B"]
+    print(data_path)
+    print(data_path)
+    print(data_path)
+    print(data_path)
+    print(data_path)
+
 
     if data == "opp":
         modalities = ["acce", "gyro"]

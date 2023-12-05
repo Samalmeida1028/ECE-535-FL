@@ -4,6 +4,7 @@ import torch
 import math
 import numpy as np
 import json
+import re
 
 from server import Server
 from client import Client
@@ -38,8 +39,9 @@ class FL:
 
         y_dist= np.unique(y_samples, return_counts=True)
         y_dist_train = np.unique(y_samples_train, return_counts=True)
-        last_slash_index = self.results_path.rfind("/")
+        last_slash_index = self.results_path.find("/")
         typemodle = self.results_path[last_slash_index+1:]
+        typemodle = re.sub('/','_',typemodle)
         data_name+=typemodle
 
         test_dist = {"name": data_name ,"trained classes": y_dist[0].tolist(),"class counts" : y_dist[1].tolist()}
@@ -47,19 +49,19 @@ class FL:
         run_acc = {}
 
         try:
-            with open("distributions/test_dist_" + data_name + ".txt", 'w') as f:
+            with open("/media/sf_ece535_project/ECE-535-SLAM/distributions/test_dist_" + data_name + ".txt", 'w') as f:
                 f.write(json.dumps(test_dist))
         except Exception as e:
             print(e, "creating file")
-            with open("distributions/test_dist_" + data_name + ".txt", 'x') as f:
+            with open("/media/sf_ece535_project/ECE-535-SLAM/distributions/test_dist_" + data_name + ".txt", 'x') as f:
                 f.write(json.dumps(test_dist))
 
         try:
-            with open("distributions/train_dist_" + data_name + ".txt", 'w') as f:
+            with open("/media/sf_ece535_project/ECE-535-SLAM/distributions/train_dist_" + data_name + ".txt", 'w') as f:
                 f.write(json.dumps(train_dist))
         except Exception as e:
             print(e, "creating file")
-            with open("distributions/train_dist_" + data_name + ".txt", 'x') as f:
+            with open("/media/sf_ece535_project/ECE-535-SLAM/distributions/train_dist_" + data_name + ".txt", 'x') as f:
                 f.write(json.dumps(train_dist))
 
         # There is a small chance that the labels in the generated server_train are fewer than the labels in server_test.
@@ -135,11 +137,11 @@ class FL:
                         run_acc[dataset_name].update({key:values})
                 print(run_acc)
                 try:
-                    with open("acc_results/result_" + data_name + ".txt", 'w') as f:
+                    with open("/media/sf_ece535_project/ECE-535-SLAM/acc_results/result_" + data_name + ".txt", 'w') as f:
                         f.write(json.dumps(run_acc))
                 except Exception as e:
                     print(e, "creating file")
-                    with open("acc_results/result_" + data_name + ".txt", 'x') as f:
+                    with open("/media/sf_ece535_project/ECE-535-SLAM/acc_results/result_" + data_name + ".txt", 'x') as f:
                         f.write(json.dumps(run_acc))
                 self.write_result(result_table)
 

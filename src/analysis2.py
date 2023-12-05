@@ -2,31 +2,59 @@ import matplotlib.pyplot as plt
 import os
 import json
 
-directory = "C:/Users/expre/OneDrive/Desktop/ece535 project/ECE-535-SLAM/acc_results"
+directory = "acc_results"
 dist_directory = "distributions"
 
 
+# # print(os.listdir(directory))
+# # print(os.listdir(dist_directory))
 
 for filename in os.listdir(directory):
-    print(filename)
-    plt.figure(filename)
-    file_path = os.path.join(directory,filename)
-    with open(file_path, "r") as f:
+    # plt.figure(filename)
+    fig, (ax1, ax2, ax3) = plt.subplots(ncols=3, figsize=(15, 5))
+    test_path = os.path.join(dist_directory,"test_dist_"+filename[7:])
+    train_path = os.path.join(dist_directory,"train_dist_"+filename[7:])
+    perclass_path = os.path.join(directory,filename)
+    with open(perclass_path, "r") as f:
         graph_data = json.load(f)
     classes = graph_data[list(graph_data)[0]]
     run_num = []
     for i in range(len(classes[list(classes)[0]])):
         run_num.append((2*i)-1)
         legend = []
+    count = 0
     for key in classes:
         datac = classes[key]
         legend.append(key)
-        plt.plot(run_num,datac)
-    plt.xlabel('Training Round')
-    plt.ylabel('Accuracy')
-    plt.yticks([0, 0.5, 1.0], ['0', '0.5', '1.0'])
-    plt.legend(legend)
-    plt.title(filename[8:-4])
+        line, = ax1.plot(run_num,datac)
+        graph_data = {}
+        with open(test_path, "r") as f:
+            graph_data = json.load(f)
+        graphkey = str(list(graph_data)[0])
+        # print(graph_data[graphkey])
+        ax2.bar(graph_data["trained classes"][count],graph_data["class counts"][count],width=.7,label=graph_data[graphkey],color = line.get_color())
+
+
+        graph_data = {}
+        with open(train_path, "r") as f:
+            graph_data = json.load(f)
+        graphkey = str(list(graph_data)[0])
+        # print(graph_data[graphkey])
+        ax3.bar(graph_data["trained classes"][count],graph_data["class counts"][count],width=.7,label=graph_data[graphkey],color = line.get_color())
+        count += 1
+
+    ax1.set_title("Per Class Accuracy")
+    ax2.set_title("Test Distribution")
+    ax3.set_title("Train Distribution")
+    fig.suptitle(graph_data[graphkey])
+    # ax1.legend(legend,loc="center right")
+    # ax2.legend(legend, loc="center right")
+    # ax3.legend(legend, loc="center right")
+    fig.legend(legend,loc="right")
+    fig.savefig("plots/"+filename+".png")
+    
+    
+
 plt.show()
 
 

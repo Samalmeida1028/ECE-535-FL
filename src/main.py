@@ -1,22 +1,35 @@
-import configparser
-from fl import FL
+# import configparser
+# from fl import FL
+import os
 
-def read_config(path):
-    config = configparser.ConfigParser()
-    config.read(path)
-    return config
+# def read_config(path):
+#     config = configparser.ConfigParser()
+#     config.read(path)
+#     return config
 
-paths = ['/media/sf_ece535_project/ECE-535-SLAM/config/mhealth/split_ae/acce_gyro/A0_B0_AB30_label_A_test_B', # UmFL
-         '/media/sf_ece535_project/ECE-535-SLAM/config/mhealth/split_ae/acce_gyro/A0_B0_AB30_label_AB_test_B', # MmFL
-         '/media/sf_ece535_project/ECE-535-SLAM/config/mhealth/ablation/acce_gyro/A30_B30_AB0_label_A_test_B', # Baseline
-         '/media/sf_ece535_project/ECE-535-SLAM/config/opp/dccae/A0_B0_AB30_label_A_test_B', # UmFL
-         '/media/sf_ece535_project/ECE-535-SLAM/config/opp/dccae/A0_B0_AB30_label_AB_test_B', # MmFL
-         '/media/sf_ece535_project/ECE-535-SLAM/config/opp/ablation/A30_B30_AB0_label_A_test_B', # Baseline
-         '/media/sf_ece535_project/ECE-535-SLAM/config/ur_fall/split_ae/rgb_depth/A0_B0_AB30_label_A_test_B', # UmFL
-         '/media/sf_ece535_project/ECE-535-SLAM/config/ur_fall/split_ae/rgb_depth/A0_B0_AB30_label_AB_test_B', # MmFL
-         '/media/sf_ece535_project/ECE-535-SLAM/config/ur_fall/ablation/rgb_depth/A30_B30_AB0_label_A_test_B'] # # Baseline
+config_directory = 'config'
 
-for p in paths:
-    config = read_config(p)
-    fl = FL(config)
-    fl.start()
+paths = []
+for dir in os.listdir(config_directory):
+    t_path=os.path.join(config_directory,dir)
+    print(t_path)
+    for direct in os.listdir(t_path):
+        t_path = os.path.join(t_path,direct)
+        print(t_path)
+        # for data in direct:
+        #     for file in data:
+        #         pass
+                # print(os.path.join(dir,direct,data,file))
+
+
+# for p in paths:
+#     print(paths)
+
+
+
+
+
+# for p in paths:
+#     config = read_config(p)
+#     fl = FL(config)
+#     fl.start()

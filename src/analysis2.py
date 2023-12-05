@@ -3,6 +3,7 @@ import os
 import json
 
 directory = "C:/Users/expre/OneDrive/Desktop/ece535 project/ECE-535-SLAM/acc_results"
+dist_directory = "distributions"
 
 
 

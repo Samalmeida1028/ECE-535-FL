@@ -1,21 +1,20 @@
-# import configparser
-# from fl import FL
+import configparser
+from fl import FL
 import os
 
-# def read_config(path):
-#     config = configparser.ConfigParser()
-#     config.read(path)
-#     return config
+def read_config(path):
+    config = configparser.ConfigParser()
+    config.read(path)
+    return config
 
 config_directory = 'config'
 
 paths = []
-for dir in os.listdir(config_directory):
-    t_path=os.path.join(config_directory,dir)
-    print(t_path)
-    for direct in os.listdir(t_path):
-        t_path = os.path.join(t_path,direct)
-        print(t_path)
+for dir, subdir,files in os.walk(config_directory):
+    for sdir in subdir:
+        for file in files:
+            paths.append(os.path.join(dir,sdir,file))
+
         # for data in direct:
         #     for file in data:
         #         pass
@@ -29,7 +28,7 @@ for dir in os.listdir(config_directory):
 
 
 
-# for p in paths:
-#     config = read_config(p)
-#     fl = FL(config)
-#     fl.start()
+for p in paths:
+    config = read_config(p)
+    fl = FL(config)
+    fl.start()

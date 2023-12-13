@@ -5,10 +5,6 @@ import json
 directory = "acc_results"
 dist_directory = "distributions"
 
-
-# # print(os.listdir(directory))
-# # print(os.listdir(dist_directory))
-
 for filename in os.listdir(directory):
     # plt.figure(filename)
     fig, (ax1, ax2, ax3) = plt.subplots(ncols=3, figsize=(15, 5))
@@ -51,7 +47,7 @@ for filename in os.listdir(directory):
     # ax2.legend(legend, loc="center right")
     # ax3.legend(legend, loc="center right")
     fig.legend(legend,loc="right")
-    fig.savefig("plots/"+filename+".png")
+    fig.savefig("acc_plots/"+filename+".png")
     
     
 

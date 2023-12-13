@@ -126,7 +126,7 @@ class FL:
 
                 if not len(run_acc):
                     run_acc = perclassaccuracy
-                    print(run_acc)
+                    #print(run_acc)
                 else:
                     for key in run_acc[dataset_name]:
                         values = run_acc[dataset_name][key]
@@ -135,7 +135,7 @@ class FL:
                         else:
                             values = [values] + [perclassaccuracy[key]]
                         run_acc[dataset_name].update({key:values})
-                print(run_acc)
+                #print(run_acc)
                 try:
                     with open("/media/sf_ece535_project/ECE-535-SLAM/acc_results/result_" + data_name + ".txt", 'w') as f:
                         f.write(json.dumps(run_acc))
@@ -143,6 +143,7 @@ class FL:
                     print(e, "creating file")
                     with open("/media/sf_ece535_project/ECE-535-SLAM/acc_results/result_" + data_name + ".txt", 'x') as f:
                         f.write(json.dumps(run_acc))
+                        
                 self.write_result(result_table)
 
     def write_result(self, result_table):
@@ -156,5 +157,5 @@ class FL:
         else:
             results_path = self.results_path
         Path(results_path).mkdir(parents=True, exist_ok=True)
-        np.savetxt(os.path.join(results_path, "results_2.txt"),
+        np.savetxt(os.path.join(results_path, "results.txt"),
                    result_table, delimiter=",", fmt="%1.4e")

@@ -1,0 +1,1 @@
+{"name": "mhealthmhealth_split_ae_acce_mage_A0_B0_AB30_label_AB_test_A", "trained classes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "class counts": [771736, 27648, 27648, 27648, 27648, 27648, 25448, 26574, 26368, 27648, 27648, 27648, 9267]}

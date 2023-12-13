@@ -1,1 +1,1 @@
-{"name": "mhealthmhealth_ablation_acce_gyro_A30_B30_AB0_label_A_test_B", "trained classes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "class counts": [66099, 3072, 3072, 3072, 3072, 3072, 2202, 2099, 2304, 3072, 3072, 3072, 1024]}
+{"name": "mhealthmhealth_ablation_acce_gyro_A30_B30_AB0_label_A_test_B", "trained classes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "class counts": [95692, 3072, 3072, 3072, 3072, 3072, 2151, 3021, 2560, 3072, 3072, 3072, 1024]}

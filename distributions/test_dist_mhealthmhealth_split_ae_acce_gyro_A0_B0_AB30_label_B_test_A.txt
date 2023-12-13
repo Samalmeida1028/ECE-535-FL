@@ -1,0 +1,1 @@
+{"name": "mhealthmhealth_split_ae_acce_gyro_A0_B0_AB30_label_B_test_A", "trained classes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "class counts": [70195, 3072, 3072, 3072, 3072, 3072, 3072, 2765, 2816, 3072, 3072, 3072, 1024]}

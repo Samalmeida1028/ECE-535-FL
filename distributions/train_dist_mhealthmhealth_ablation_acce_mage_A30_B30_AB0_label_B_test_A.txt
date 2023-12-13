@@ -1,0 +1,1 @@
+{"name": "mhealthmhealth_ablation_acce_mage_A30_B30_AB0_label_B_test_A", "trained classes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "class counts": [777521, 27648, 27648, 27648, 27648, 27648, 25141, 26113, 25907, 27648, 27648, 27648, 9318]}

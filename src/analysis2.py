@@ -51,7 +51,7 @@ for filename in os.listdir(directory):
     
     
 
-plt.show()
+# plt.show()
 
 
 

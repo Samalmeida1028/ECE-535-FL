@@ -1,0 +1,1 @@
+{"name": "ur_fallur_fall_split_ae_acce_depth_A0_B10_AB30_label_A_test_B", "trained classes": [0.0, 1.0, 2.0], "class counts": [6524, 1610, 2137]}

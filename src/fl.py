@@ -5,6 +5,7 @@ import math
 import numpy as np
 import json
 import re
+import time
 
 from server import Server
 from client import Client
@@ -96,6 +97,7 @@ class FL:
         row = 0
 
         for t in range(self.rounds):
+            time.sleep(.5)
             print(f"Round {t+1} starts")
             selected_clients = server.select_clients(clients)
             local_models = []
@@ -126,7 +128,7 @@ class FL:
 
                 if not len(run_acc):
                     run_acc = perclassaccuracy
-                    #print(run_acc)
+                    print(run_acc)
                 else:
                     for key in run_acc[dataset_name]:
                         values = run_acc[dataset_name][key]

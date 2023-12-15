@@ -13,8 +13,7 @@ paths = []
 for dir, subdir, files in os.walk(config_directory):
     if len(subdir) == 0:
         for file in files:
-            if "fall" in os.path.join(dir, file):
-                paths.append(os.path.join(dir, file))
+            paths.append(os.path.join(dir, file))
 
 # for p in paths:
 #     print(p)
@@ -24,4 +23,5 @@ for dir, subdir, files in os.walk(config_directory):
 for p in paths:
     config = read_config(p)
     fl = FL(config)
-    fl.start()
+    if not os.path.isdir(fl.results_path): 
+        fl.start()

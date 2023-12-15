@@ -1,1 +1,1 @@
-{"name": "ur_fallur_fall_ablation_acce_depth_A30_B30_AB0_label_B_test_A", "trained classes": [0.0, 1.0, 2.0], "class counts": [6810, 1501, 2061]}
+{"name": "ur_fallur_fall_ablation_acce_depth_A30_B30_AB0_label_B_test_A", "trained classes": [0.0, 1.0, 2.0], "class counts": [6595, 1501, 2070]}

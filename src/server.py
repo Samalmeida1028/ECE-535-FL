@@ -235,7 +235,7 @@ class Server:
         class_counter = dict.fromkeys(classes, 0)
         class_counts = dict(zip(classes, class_counts))
         perclassacc = {data_name:dict.fromkeys(classes, 0.0)}
-        print(perclassacc)
+        # print(perclassacc)
 
         win_loss = []
         win_accuracy = []
